@@ -1,0 +1,3 @@
+<% @books= @books.joins("LEFT OUTER JOIN likes ON likes.book_id = books.id").group(:id).order('count(book_id) desc') %>
+<%= render partial: 'books/book_template' %>
+  

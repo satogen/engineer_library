@@ -1,0 +1,17 @@
+<div class = "side-bar-flex">
+  <%= link_to book_path(book.id) do %>
+    <div class = "side-img-style col-sm-5">
+      <%= image_tag(book.img.url) %>
+    </div>
+    <div class = "side-bar-content col-sm-7">
+      <p><%= book.title %></p>
+      <div class = "user-show">
+        <%= image_tag book.user.img.url,class: "user-img" %>
+        <%= book.user.name %>        
+      </div>
+
+      <div class = "like-count">気になる!<%= book.likes_count %>件</div>
+      <div class = "recommend_count">おすすめ!<%= book.recommend_counter %>件</div>
+    </div>
+  <% end %>
+</div>

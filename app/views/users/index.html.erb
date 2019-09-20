@@ -1,0 +1,7 @@
+<h1>ユーザ一覧です</h1>
+
+<% @users.each_with_index do |user,i| %>
+  <%= image_tag user.img.url %>
+  <%= user.name %>
+  
+<% end %>

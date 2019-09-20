@@ -1,0 +1,30 @@
+<% unless session[:user_id] %>
+  <div class = "top-background">
+    <div class = "top-wide">
+      <div class = "col-sm-6">
+        <div class = "top-title">Hello World！</div>
+        <div id = "title">
+          EEBooKとは、エンジニアリング系の本の評価をまとめたサイトです。あなたが読んだ本の評価や感想を書くことで、記録に残すことが可能ですし、その後読む方の助けになります。是非活用していってください!
+        </div>
+      </div>  
+    <div class = "title-center col-sm-6">
+      <% @submit = "ログイン" %>
+      <% @url = users_login_path %>
+     <%= render partial: "users/form",locals: {url: @url} %>
+    </div>    
+    </div>
+  </div>
+<% end %>
+<div class = "body-width">
+  <h1>本一覧です</h1>
+  <div class = "col-sm-8 left-content">
+    <%= render partial: "books/book_template" %>
+
+
+  </div>
+  <div class = "col-sm-4 sidebar">
+    <div>
+      <%= render partial: 'layouts/sidebar' %>
+    </div>
+  </div>
+</div>

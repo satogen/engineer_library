@@ -1,0 +1,18 @@
+<div class="dropdown">
+  <!-- 切替ボタンの設定 -->
+  <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    ドロップダウンボタン
+  </button>
+  <!-- ドロップメニューの設定 -->
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">メニュー1</a>
+      <% if logged_in? %>
+      　<%= link_to @current_user.name,user_path(@current_user.id),class: "dropdown-item" %>
+      　<%= link_to "ログアウト",user_path(@current_user.id),method: :delete,class: "dropdown-item" %>
+      　<%= link_to "おすすめ本の作成",new_book_path,class: "dropdown-item" %>
+      　<%= link_to "本一覧",books_path,class: "dropdown-item" %>
+    <% else %>  
+      <%= link_to "ログイン",users_login_form_path,class: "dropdown-item" %>
+    <% end %>
+  </div><!-- /.dropdown-menu -->
+</div><!-- /.dropdown -->

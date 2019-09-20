@@ -1,0 +1,108 @@
+$input_font_size:20px;
+
+.show-head-content{
+  overflow:hidden;
+  .show-img{
+    padding:0;
+    img{
+      width: 150px;
+      height: 250px;
+    }
+  }
+  .tag-list{
+    margin-top:30px;
+    margin-bottom:30px;
+    
+    .label-size{
+     font-size:20px;
+     margin-right:10px;
+    }    
+  }
+  .show-user-profile {
+    padding-bottom:10px;
+  img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+}
+.show-all-content{
+  background:white;
+  overflow:hidden;
+  padding:10px 20px;
+}
+.show-title h1{
+  display: table-cell;
+  vertical-align: middle;  
+  height:80px;
+}
+.show-body{
+  margin-top:50px;
+}
+// 一覧ページ
+.left-content{
+  overflow:hidden;
+  padding:0 50px;
+
+}
+.book-content{
+  text-align:center;
+}
+.img-style img{
+  width: 150px;
+  height: 200px;
+}
+.book-title{
+  font-size:15px;
+}
+.book-create-head{
+  margin-bottom:30px !important;
+}
+.book-form-text{
+  padding-top:30px;
+}
+.vue-input{
+  width:100%;
+  overflow:auto;
+  border: 1px solid #CCCCCC;
+  background: white;
+  border-radius: 5px;
+  height:300px;
+  word-wrap: break-word;
+  font-size:$input_font_size;
+}
+#book_text{
+  font-size:$input_font_size;
+}
+.form-smoll-author{
+  width:35%;
+  display:inline-block;
+  margin-right:2%;
+}
+.form-amoll-tag{
+  width:62%;
+  display:inline-block;
+}
+.book-img-btn{
+  font-size:30px;
+}
+.img_prev{
+  width: 150px;
+  height: 200px;
+}
+.img-select-btn{
+  display:inline-block;
+}
+.img-select{
+  display:inline-block;
+}
+.img-form{
+  margin-top:20px;
+  margin-bottom:30px;
+}
+.book-new-page{
+  width:80%;
+  margin: 0 auto;
+}

@@ -1,0 +1,53 @@
+<%= form_for :book,url: {action: @action},method: "#{@method_name}" do |f| %>
+  <% @image = @book.img.url %>
+  <div>
+    <% @method_name %>
+    <%= render partial: "books/book_action" %>
+  </div>
+  <div class = "form_group">
+    <%= f.text_field :title,class: "form-control",placeholder: "書籍名"%><br>
+  </div>
+  <div class = "form_group form-smoll-author">
+    <%= f.text_field :author,class: "form-control",placeholder: "著者名"%>
+  </div>  
+  <div class = "form_group form-amoll-tag">
+    <%= f.text_field :tag_list, value: @book.tag_list.join(','), class: "form-control",placeholder: "プログラミングに関するタグをカンマ区切りで入力(例:HTML,CSS)" %>
+  </div>
+  <div class = "form_group book-form-text">
+    <div class = "list">
+      <ul class = "tab-head book-create-head">
+        <li class = "on">
+          本文
+        </li>
+        <li>
+          プレビュー
+        </li>
+      </ul>
+    </div>
+  </div>  
+  <div class = "form_group editor">
+    <div class = "list">
+      <ul class = "tab-body">
+        <li class = "on">
+          <%= f.text_area :text, rows: 10, class: 'form-control', "v-model" => "input", name: "book[text]",placeholder: "markdown方式で記述してください" %>
+        </li>
+        <li class = "vue-input">
+          <div v-html='input | marked'></div> 
+        </li>
+      </ul>
+    </div>
+  </div>
+  　<%= f.label '書籍画像' %>
+  　<div class = "img-form">
+    　<div class = "img-select">
+    　   <%= image_tag @book.img.url, class: :img_prev %>
+    　</div>
+    　<div class = "img-select-btn">
+        <%= f.file_field :img, class: "book-img-btn btn" %>
+    　</div>  
+  　</div>
+  　
+  <%= f.submit @submit,class: "btn btn-outline-" %>
+    <%= render partial: "users/list_function"%>
+
+<% end %>

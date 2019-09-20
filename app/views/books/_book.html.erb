@@ -1,0 +1,25 @@
+<div class = "col-xs-3 book-content">
+<div class= "img-style">
+<%= link_to (image_tag book.img.url),book_path(book.id)%>
+</div>
+<h1 class="book-title">
+<%= link_to book.title,book_path(book.id) %>
+</h1>
+<% if session[:user_id] != nil  %>
+ <%= render partial: 'books/like_btn',locals: {book: book} %>
+<% else %>
+  <div class = "like-count">
+    気になる!
+    <%= Like.where(book_id: book.id).count %>
+    件
+  </div>
+  <div class = "recommend_count">
+    おすすめ!
+    <%= book.recommend_counter %>
+    件
+  </div>
+<% end %>
+<%= link_to user_path(book.user.id) do %>
+  <%= image_tag book.user.img.url,class: "user-img" %>
+  <%= book.user.name %>
+<% end %>

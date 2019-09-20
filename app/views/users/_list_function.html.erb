@@ -1,0 +1,19 @@
+<script>
+  (function($){
+
+$(document).ready(function(){
+  var tablist = $(".tab-head li");
+  var tabbody = $(".tab-body > li");
+  
+  console.log(tabbody);
+  tablist.click(function(){
+    var idx = tablist.index($(this));
+    console.log(idx);
+    tablist.removeClass("on").eq(idx).addClass("on");
+    tabbody.removeClass("on").eq(idx).addClass("on");
+  });
+});
+
+
+})(jQuery);
+</script>

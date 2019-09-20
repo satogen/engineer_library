@@ -1,0 +1,9 @@
+<div style = "overflow: hidden">
+  <% @books.each.with_index(1) do |book,i| %>
+    <%= render partial: "books/book",locals: {book: book} %>
+    </div>
+  <% end %>
+</div>
+<span class = "page-nation">
+  <%= paginate @books %>
+</span>

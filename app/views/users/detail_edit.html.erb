@@ -1,0 +1,60 @@
+<h1>ユーザ編集ページです</h1>
+<%= form_for :user,url: {action: :detail_update}  do |f| %>
+<div class = "text">
+<div class = "user-profile-box">
+    <%= image_tag @user.img.url, class: :img_prev,width: 200,height: 200,class: "user-icon"%>
+  <div class= "user-profile-content">
+        <div class = "user-name">{{a}}</div>
+      <div class = "user-text">{{b}}</div>  
+    <!--ユーザ詳細を載せる-->
+      <!--ユーザ詳細を載せる-->
+  </div>
+</div>
+
+ <div class = "form_group detail-form">画像:
+  <%= f.file_field :img, class: 'book_img' %>
+ </div>
+ <div class ="form_group detail-form"> 
+    名前:<%= f.text_field :name,placeholder: "名前を入力してください",required: true,class: 'form-control form-user-name',html: {value: @user.name,maxlength: 10},"v-model.trim" => "a",name: "user[name]" %>
+   <div class = "word-count form-group">残り文字数{{20 - a.length}}</div>
+   <div class = "count_alert_name"></div>
+
+ </div>
+
+  <div class = "form_group detail-form">
+    プロフィール:<%= f.text_area :text,rows: 5,class: 'form-control form-user-text',placeholder: "プロフィールがまだ記載されてません",html: {value: @user.text,maxlength: 170 },"v-model.trim" => "b",name: "user[text]"%>
+   <div class = "word-count form-group">残り文字数{{170 - b.length}}</div>
+    <div class = "count_alert"></div>
+  </div>
+</div>
+
+  <%= f.submit "変更を保存",class: "btn" %>
+<% end %>
+
+<%= render partial: 'img_action' %>
+<script type = "text/javascript">
+   new Vue({
+    el: ".text",
+    data: {a: "", b: ""},
+  });
+$('.form-user-text').bind('keydown keyup keypress change',function(){
+  var txt = $(this).val(),
+  new_txt = $.trim(txt.replace(/\n/g, "")),
+  couter = new_txt.length;
+  if(couter > 170){
+  $('.count_alert').html("170文字を超えています");
+  }else{
+  $('.count_alert').html("");
+  }
+});
+$('.form-user-name').bind('keydown keyup keypress change',function(){
+  var txt = $(this).val(),
+  new_txt = $.trim(txt.replace(/\n/g, "")),
+  couter = new_txt.length;
+  if(couter > 20){
+  $('.count_alert_name').html("20文字を超えています");
+  }else{
+  $('.count_alert_name').html("");
+  }
+});
+</script>

@@ -1,0 +1,31 @@
+<div class = "like-count">
+  <% if Like.find_by(book_id: book.id,user_id: session[:user_id]) %>
+    <%= link_to "/not_likes/#{book.id}",method: :post do %>
+      気になる!<i class="fas fa-book-open like"></i>
+      <%= book_like = Like.where(book_id: book.id).count %>
+      件
+    <% end %>
+  <% else %>
+    <%= link_to "/add_likes/#{book.id}",method: :post do  %>
+      気になる!<i class="fas fa-book-open unlike"></i>    
+      <%= book_like = Like.where(book_id: book.id).count %>
+      件
+    <% end %>
+  <% end %>  
+</div>
+
+<div class = "recommend_count">
+  <% if Recommend.find_by(book_id: book.id,user_id: session[:user_id]) %>
+    <%= link_to "/no_recommend/#{book.id}",method: :post do %>
+      おすすめ!<i class="fas fa-star recommend"></i>
+      <%= book_recommend = book.recommend_counter %>
+      件
+    <% end %>
+  <% else %>
+    <%= link_to "/recommend/#{book.id}",method: :post do  %>
+      おすすめ!<i class="fas fa-star unrecommend"></i>
+      <%= book_recommend = book.recommend_counter %>
+      件
+    <% end %>
+  <% end %>  
+</div>

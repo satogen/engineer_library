@@ -1,0 +1,6 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>
+  <% @book.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+<% end %>

@@ -1,0 +1,23 @@
+<h2>気になる本ランキング</h2>
+  <% @likes = Like.group(:book_id).order('count(user_id) desc').limit(3)  %>
+  <% @likes.each do |like| %>
+    <% book = like.book %>
+    <%= render partial: "layouts/sidebar_template",locals: {book: book} %>
+  <% end %>
+<h2>執筆数ランキング</h2>
+  <% @books = Book.group(:user_id).order('count(id) desc').limit(3)  %>
+  <% @books.each do |book| %>
+    <% user = book.user %>
+    <div class = "side-bar-flex">
+      <%= link_to user_path(user.id) do %>
+        <div class = "side-img-style col-sm-5">
+          <%= image_tag(user.img.url) %>
+        </div>
+        <div class = "side-bar-content col-sm-7">
+          <p><%= user.name %></p>
+          
+          <%= user.text ? truncate(user.text,length: 45): "プロフィールがありません" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>

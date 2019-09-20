@@ -1,0 +1,7 @@
+<div style = "overflow: hidden">
+  <% @likes.each.with_index(1) do |like,i| %>
+    <% book = like.book %> 
+    <%= render partial: 'books/book',locals: {book: book} %>
+    </div>
+  <% end %>
+</div>

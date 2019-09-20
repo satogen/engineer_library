@@ -1,0 +1,45 @@
+<header>
+<nav class="navbar-default">
+  <div class="container-fluid header-flex">
+    
+    <div class=" site-name">
+      エンジニアのための本選びサイト
+    </div> 
+    
+    <div class=" header-content">
+      <%= form_tag(books_search_path,method: :get) do %>
+        <%= text_field_tag :search,'',placeholder: "書籍名、著者",class: "form-control search-field" %>
+        <%= text_field_tag :tag_search,'',placeholder: "言語,タグ",class: "form-control tag-search-field"%>
+        <%= submit_tag '検索', :name => nil,class: "search-btn btn" %>
+      <% end %>
+    </div>
+    <div class = "">
+      <%= link_to "一覧ページ",books_path,class: "header-link" %>
+    </div>    
+    <div class = "">
+      <%= link_to "書評をつくる",new_book_path,class: "header-link" %>
+    </div>
+    <div class="dropdown">
+  <!-- 切替ボタンの設定 -->
+    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <% if logged_in? %>
+       <%= @current_user.name %>
+     <% else %>
+       ログイン
+     <% end %>
+    </button>
+  <!-- ドロップメニューの設定 -->
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% if logged_in? %>
+        　<%= link_to "ユーザ詳細",user_path(@current_user.id),class: "dropdown-item" %>
+        　<%= link_to "ログアウト",user_path(@current_user.id),method: :delete,class: "dropdown-item" %>
+        　<%= link_to "おすすめ本の作成",new_book_path,class: "dropdown-item" %>
+        　<%= link_to "本一覧",books_path,class: "dropdown-item" %>
+        <% else %>
+        <%= link_to "ログイン",users_login_form_path,class: "dropdown-item" %>
+      <% end %>
+      </div><!-- /.dropdown-menu -->
+    </div><!-- /.dropdown -->
+  </div>
+</nav>
+</header>

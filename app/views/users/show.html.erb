@@ -1,0 +1,107 @@
+<% provide(:title,@user.name) %>
+<h1><%= @user.name %>のページです</h1>
+<div class = "text">
+  <div class = "user-profile-box">
+    <%= image_tag @user.img.url, width: 200,height: 200,class: "user-icon" %>
+  <div class= "user-profile-content">
+    <p class = "user-name">  
+      <%= @user.name %>
+    </p>
+    <p class = "user-text">
+      <%= @user.text %>  
+      <!--ユーザ詳細を載せる-->
+    </p>
+  </div>
+  <% if @current_user%>
+      <%= link_to "ユーザプロフィールを編集する","/users/#{@user.id}/detail_edit" if session[:user_id] == @current_user.id%>
+  <% end %>
+  </div>  
+</div>
+
+
+<div class = "list">
+  <ul class = "tab-head">
+    <li class = "on">
+      紹介した本
+      <%= create_book_count(@user.id) %>
+    </li>
+    <li>
+      気になるリスト
+      <%= user_like_count(@user.id) %>
+    </li>
+    <li>
+      おすすめ本リスト
+      <%= user_recommend_count(@user.id) %>
+    </li>
+    <li>
+    　紹介した本に対するコメント
+    　<%= user_return_comment(@user.id) %>
+    </li>
+    <li>
+      コメント履歴
+      <%= user_history_comment(@user.id) %>
+    </li>
+  </ul>
+  <ul class = "tab-body">
+    <li class = "on">
+      <%= render partial: 'books/book_template' %>
+    </li>  
+    <li>
+    <% if @likes %>
+      <%= render partial: 'books/book_like_template'%>
+    <% else %>
+      お気に入りがありません
+    <% end %>
+    </li>
+    <li>
+    <% if user_recommend_count(@user.id) == 0 %>
+      <h1>おすすめ本がありません</h1>
+    <% elsif @recommends %>
+      <%= render partial: 'books/book_recommend_template'%>
+    <% end %>
+    </li>
+    <li>
+      <% @books.each_with_index do |book,i| %>
+        <% if book.comments %>
+          <% book.comments.each do |comment| %>
+          <div class = "comment-content">
+            <div class = "comment-content-head">
+              <%= link_to book_path(book.id) do %>
+                <%= image_tag book.img.url,class: "book-image"%>
+                <h2><%= book.title %></h2>  
+              <% end %>
+            </div>
+            <div class = "comment-text">
+              <%= comment.text %>
+            </div>
+            <div>
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </li>
+    <li>
+      <% @comments.each do |comment| %>
+        <div class = "comment-content">
+          <div class = "comment-content-head">
+            <%= link_to book_path(comment.book.id) do %>
+              <%= image_tag comment.book.img.url,class: "book-image"%>
+              <h2><%= comment.book.title %></h2>
+            <% end %>
+          </div>
+          <div class = "comment-text">
+            <%= comment.text %>
+          </div>
+          <div>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  </ul>  
+</div>
+
+<%= render partial: 'list_function' %>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %></title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js'></script>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= render partial: "layouts/header"  %>
+    <% if flash[:notice] %>
+      <div class = "flash-message">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% page_url = request.path %>
+    <% unless page_url == '/' || page_url == '/users/login_form' || page_url == '/users/new' || page_url == '/books/new' || page_url == "/books/#{@book.id}/edit" %>
+      <div class = "body-width">
+        <div class = "col-sm-8 left-content">
+          <%= yield %>
+        </div>
+        <div class = "col-sm-4 sidebar">
+          <div>
+            <%= render partial: 'layouts/sidebar' %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+    <div class = "no-sidebar">
+    <%= yield %>  
+    </div>
+    <% end %>
+
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright --><hr>
+  <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <a href="https://halogen322.com"> 運営者:佐藤 現</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+  </body>
+</html>

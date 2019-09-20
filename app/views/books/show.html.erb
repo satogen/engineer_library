@@ -1,0 +1,64 @@
+<% provide(:title,@book.title) %>
+<h1><strong><%= @book.title %></strong></h1>
+<div class = "show-all-content">
+  <div class = "show-head-content">
+    <div class = "show-img col-md-3">
+      <%= image_tag @book.img.url %><br>
+    </div>
+    <div class = "show-title col-md-9">
+      <h1><%= @book.title %></h1>
+      <div class="tag-list">
+        <%= render 'books/tag_list',tag_list: @book.tag_list %>
+      </div>
+      <div class = "show-user-profile">
+        <%= link_to user_path(@book.user_id)do %>
+          <%= image_tag @book.user.img.url %>
+          <%= @book.user.name %>
+        <% end %>
+      </div>
+      <% if !session[:user_id].present? %>
+        <div>
+          <div class = "col-md-6 like-count">
+            気になる!<%= book_like_count(@book.id) %>件
+          </div>
+          <div class = "col-md-6 recommend_count">
+            おすすめ!<%= book_recommend_count(@book.id) %>件
+          </div>
+        </div>
+      <% else %>
+        <%= render partial: 'books/like_btn',locals: {book: @book} %>
+      <% end %>
+    </div>
+  
+  </div>
+  <% if session[:user_id] == @book.user_id %>
+    <div>
+      <%= link_to "編集する",edit_book_path(@book.id),class: "edit-link" %>
+      <%= link_to "削除する",book_path(@book.id),method: :delete,data: {confirm: "本当によろしいですか？"},class: "delete-link" %>    
+    </div>
+  <% end %>
+  <div class = "show-body">
+    <%= markdown("#{@book.text}") %>
+  </div>
+  
+  
+  <% if logged_in? %>
+    <% if @comments.present? %>
+    <h2>コメント一覧</h2>
+      <% @comments.each do |comment| %>
+        <%= comment.text %>
+        <p>書いたのは、</p>
+        <%= comment.user.name %>
+      <% end %>
+    <% end %>
+    <div>150文字でコメント書き込む</div>
+    <%= form_for :comment,url: "/comments/#{@book.id}" do |f| %>
+      <div class = "form_group">
+       <%= f.text_area :text,class: "comment-input",rows: 3,cols: 70 %>
+      </div>
+      <%= f.submit "コメントする" %>
+    <% end %>
+  <% end %>
+  <div class = "count_alert"></div>
+</div>
+

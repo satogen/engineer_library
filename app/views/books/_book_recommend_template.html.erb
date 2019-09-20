@@ -1,0 +1,7 @@
+<% @recommends.each.with_index(1) do |recommend,i| %>
+  <% book = recommend.book %>
+  
+  <%= render partial: 'books/book',locals: {book: book} %>
+  </div>
+  <% break if i == @break_number%>
+<% end %>

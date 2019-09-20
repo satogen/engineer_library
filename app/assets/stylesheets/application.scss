@@ -1,0 +1,312 @@
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "books";
+@import "users";
+/*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+*{
+ margin: 0;
+ padding: 0;
+}
+textarea{
+  resize: none;
+}
+a{
+  text-decoration: none;
+  color: inherit !important;
+}
+p{
+   margin: 0;
+   padding: 0;
+   font-size:17.5px;
+}
+li{
+   list-style-type: none;
+}
+body{
+  background-color:#f2f2f2 !important;
+  color:dimgray !important;
+}
+.no-sidebar{
+  overflow:hidden;
+}
+// sidebar
+.sidebar{
+  padding-right:80px !important;
+}
+.user-img{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+}
+.side-img-style{
+  display:inline-block;
+}
+.side-img-style img{
+  width:100px;
+  height:150px;
+}
+.side-bar-content{
+  display:inline-block;
+  height:150px;
+    p{
+      word-wrap: break-word;
+      font-size: 15px;
+      height: 50px;
+      display: table-cell;
+      vertical-align: middle;
+    }
+}
+.side-bar-flex{
+  // display:flex;
+  margin-bottom:20px;
+  background: white;
+  padding: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.user-show{
+  overflow:hidden;
+  padding:5px 0;
+}
+// ヘッダー
+.search-field{
+  display: inline-block !important;
+  width: 325px !important;
+}
+.tag-search-field{
+  display: inline-block !important;
+  width: 110px !important;
+}
+.search-btn{
+  background: #1FA67B;
+  color: white;
+  border: 2px solid white!important;
+  padding: 4px 10px;
+  display:inline-block !important;
+}
+.header-flex{
+  width:95%;
+  display:flex;
+  align-items:center;
+  height:80px;
+}
+.header-content{
+  margin-left:50px;
+}
+.search-second{
+  margin-right:10px;
+}
+.site-name{
+  font-size:20px;
+}
+.navbar-default{
+  background-color: #1FA67B !important;
+  color: white;
+}
+.header-link{
+  color: white !important;
+  background: #289270;
+  /* height: 100%; */
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+// ホームページ
+.top-background{
+  overflow:hidden;
+  background:#1FA67B;
+  color:white;
+}
+.title-center{
+  padding-top:20px;
+ padding-right:30px; 
+}
+.top-wide{
+  width:80%;
+  margin:0 auto;
+}
+#title{
+  font-size: 17px ;
+  letter-spacing: 2px;
+}
+.top-title{
+  font-size: 30px;
+  padding-bottom: 15px;
+  padding-top:20px;
+}
+.user-login{
+  padding-bottom:20px;
+}
+.login-btn{
+  background:#1FA67B;
+  border:2px solid white !important;
+}
+.login-btn{
+  margin-bottom:20px !important;
+}
+.book-content{
+  width:23% !important;
+  text-align: center;
+  background: white;
+  padding: 0;
+  margin: 5px 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right:13px !important;
+  padding-left:13px !important;
+  border-radius: 5px;
+}
+.book-title{
+  display: table;
+  text-align: center;
+  margin: 0 auto;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  a{
+    display:table-cell;
+    vertical-align:middle;
+  }
+}
+.like-count{
+  color:pink;
+}
+.recommend_count{
+  color:skyblue;
+  padding-bottom:3px;
+}
+// 
+.like{
+  color:pink;
+}
+.unlike,.unrecommend{
+  color:#00000054;
+}
+.recommend{
+  color:skyblue;
+}
+.like,.unlike,.recommend,.unrecommend{
+  padding-left:5px;
+  padding-bottom:2px;
+}
+.flash-message{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:tomato;
+  color:white;
+  text-align:center;
+  z-index:100;
+}
+// user詳細ページの設定
+.user-profile-box{
+  overflow:hidden;
+    .user-icon{
+    border-radius:50%;
+    float:left;
+    margin-right:50px;
+  }
+  .user-profile-content{
+    margin-left:150px;
+      .user-name{
+        font-size:35px;
+      }
+      .user-text{
+        font-size:15px;
+      }
+  }
+}
+
+
+
+.content-center{
+	 margin: 0 auto;
+}
+.form-group{
+   margin: 0 !important;
+}
+#login {
+    padding-top: 50px
+}
+#login .form-wrap {
+    width: 30%;
+    margin: 0 auto;
+}
+#login h1 {
+    color: #1fa67b;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+#login .btn.btn-custom {
+    font-size: 14px;
+	margin-bottom: 20px;
+}
+#login .forget {
+    font-size: 13px;
+	text-align: center;
+	display: block;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.form-control {
+    color: #212121;
+}
+.btn-custom {
+    color: #fff;
+	background-color: #1fa67b;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color: #fff;
+}
+.body-width{
+    overflow:hidden;
+    margin-left:150px;
+    padding-top:50px;
+}
+
+// ページネーションの設定
+.pagination>li>a {
+  color: #696969;  /*文字の色を変える*/
+}
+.pagination li a{
+  margin:0 3px;
+}
+.page a{
+  border-radius:50%;
+}
+.active{
+  color:white;
+}
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #1FA67B !important;     /*背景の色を変える*/
+  color:white;
+  border-radius:50% !important;
+}
+.page-nation{
+  display:inline-block;
+  text-align:center;
+  margin-top:40px;
+}
+// 記事詳細ページ
+
+.show-body {
+  h1,h2,h3,h4,h5,h6{
+    padding: 0.4em 0.5em;
+    color: #494949;
+    background: #ecf8e5;
+    border-left: solid 5px #1fa67bb8;
+    border-bottom: solid 3px #cbcbcb;
+    }
+}
