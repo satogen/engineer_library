@@ -6,8 +6,12 @@
     <div class = "side-bar-content col-sm-7">
       <p><%= book.title %></p>
       <div class = "user-show">
-        <%= image_tag book.user.img.url,class: "user-img" %>
-        <%= book.user.name %>        
+        <div class = "sidebar-user-img">
+          <%= image_tag book.user.img.url,class: "user-img" %>
+        </div>
+        <div class = "sidebar-user-name">
+          <%= book.user.name %>        
+        </div>
       </div>
 
       <div class = "like-count">気になる!<%= book.likes_count %>件</div>

@@ -1,4 +1,5 @@
 $input_font_size:20px;
+@import "responsive";
 
 .show-head-content{
   overflow:hidden;
@@ -47,21 +48,29 @@ $input_font_size:20px;
   padding:0 50px;
 
 }
-.book-content{
-  text-align:center;
-}
-.img-style img{
-  width: 150px;
-  height: 200px;
-}
-.book-title{
-  font-size:15px;
-}
+
 .book-create-head{
   margin-bottom:30px !important;
 }
 .book-form-text{
   padding-top:30px;
+}
+.book-form-title{
+  @include sp_more{
+    display:inline-block;
+    width:50%;    
+  }
+  @include sp{
+    display:block;
+    width:100%;
+    margin-bottom:10px;
+  }
+
+}
+.post-content{
+  @include sp{
+    height:100px !important;
+  }
 }
 .vue-input{
   width:100%;
@@ -76,14 +85,16 @@ $input_font_size:20px;
 #book_text{
   font-size:$input_font_size;
 }
-.form-smoll-author{
-  width:35%;
-  display:inline-block;
-  margin-right:2%;
-}
 .form-amoll-tag{
-  width:62%;
-  display:inline-block;
+  @include sp_more{
+    width:30%;
+    display:inline-block;    
+  }
+  @include sp{
+    width:60%;
+    display:block;
+  }
+
 }
 .book-img-btn{
   font-size:30px;
@@ -97,6 +108,7 @@ $input_font_size:20px;
 }
 .img-select{
   display:inline-block;
+
 }
 .img-form{
   margin-top:20px;

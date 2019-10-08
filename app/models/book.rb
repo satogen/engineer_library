@@ -16,7 +16,7 @@ class Book < ApplicationRecord
   # end
   
   scope :get_by_book_name,-> (search){
-    where(['title LIKE ? OR author LIKE ?',"%#{search}%","%#{search}%"])
+    where(['title LIKE ? ',"%#{search}%"])
   }
   
   def user

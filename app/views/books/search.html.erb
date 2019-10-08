@@ -1,26 +1,17 @@
-<h1>検索結果一覧です</h1>
+<h1>検索結果一覧</h1>
 <div class = "list">
   <ul class = "tab-head">
     <% if params[:tag_search].present? && params[:search].present? %>
-      <li class = "on">
-        <%= params[:search] %>,<%= params[:tag_search]%>検索に一致する本の一覧 
-      </li>
-      <li>
-        <%= params[:search] %>,<%= params[:tag_search]%>検索に一致するオススメ本ランキング
+      <li class = "">
+        <%= params[:search] %>,<%= params[:tag_search]%>検索に一致する幸せ投稿 
       </li>
     <% elsif params[:tag_search].present? %>
-      <li class = "on">
-        <%= params[:tag_search] %>のタグがついている本の一覧 
+      <li class = "">
+        <%= params[:tag_search] %>のタグがついている投稿一覧 
       </li>
-      <li>
-        <%= params[:tag_search] %>のタグがついているオススメ本ランキング
-      </li>  
     <% elsif params[:search].present? %>
-      <li class = "on">
-        <%= params[:search] %>のタイトルがついている本の一覧 
-      </li>
-      <li>
-        <%= params[:search] %>のタイトルがついているオススメ本ランキング
+      <li class = "">
+        <%= params[:search] %>のタイトルがついている投稿一覧 
       </li>
     <% end %>
   </ul>
@@ -29,16 +20,5 @@
     <li class = "on">
       <%= render partial: 'books/book_template' %>
     </li>
-    <li>
-      <% if params[:tag_search] && params[:search] %>
-        <%= render partial: 'search_books' %>
-      <% elsif params[:tag_search] %>
-        <%= render partial: 'search_books' %>
-      <% elsif params[:search] %>
-        <%= render partial: 'search_books' %>
-      <% end %>
-    </li>
   </ul>
 </div>
-
-<%= render partial: 'users/list_function' %>

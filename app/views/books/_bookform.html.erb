@@ -4,14 +4,11 @@
     <% @method_name %>
     <%= render partial: "books/book_action" %>
   </div>
-  <div class = "form_group">
-    <%= f.text_field :title,class: "form-control",placeholder: "書籍名"%><br>
+  <div class = "form_group book-form-title">
+    <%= f.text_field :title,class: "form-control",placeholder: "タイトル"%>
   </div>
-  <div class = "form_group form-smoll-author">
-    <%= f.text_field :author,class: "form-control",placeholder: "著者名"%>
-  </div>  
   <div class = "form_group form-amoll-tag">
-    <%= f.text_field :tag_list, value: @book.tag_list.join(','), class: "form-control",placeholder: "プログラミングに関するタグをカンマ区切りで入力(例:HTML,CSS)" %>
+    <%= f.text_field :tag_list, value: @book.tag_list.join(','), class: "form-control",placeholder: "タグ(例:幸せ,癒やし)" %>
   </div>
   <div class = "form_group book-form-text">
     <div class = "list">
@@ -29,7 +26,7 @@
     <div class = "list">
       <ul class = "tab-body">
         <li class = "on">
-          <%= f.text_area :text, rows: 10, class: 'form-control', "v-model" => "input", name: "book[text]",placeholder: "markdown方式で記述してください" %>
+          <%= f.text_area :text, rows: 10, class: 'form-control post-content', "v-model" => "input", name: "book[text]",placeholder: "投稿内容(markdown方式で記述も可能になっています)" %>
         </li>
         <li class = "vue-input">
           <div v-html='input | marked'></div> 
@@ -37,7 +34,7 @@
       </ul>
     </div>
   </div>
-  　<%= f.label '書籍画像' %>
+  　<%= f.label '写真を選択' %>
   　<div class = "img-form">
     　<div class = "img-select">
     　   <%= image_tag @book.img.url, class: :img_prev %>

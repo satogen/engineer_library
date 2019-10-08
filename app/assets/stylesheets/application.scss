@@ -3,9 +3,11 @@
 @import "font-awesome";
 @import "books";
 @import "users";
+@import "responsive";
 /*    --------------------------------------------------
 	:: Login Section
 	-------------------------------------------------- */
+
 *{
  margin: 0;
  padding: 0;
@@ -34,29 +36,74 @@ body{
 }
 // sidebar
 .sidebar{
-  padding-right:80px !important;
+  @include pc{
+    padding-right:80px !important;
+  };
+  @include tab{
+    padding-right:30px !important;
+  };
 }
 .user-img{
-  width:30px;
-  height:30px;
+  @include pc{
+    width:30px;
+    height:30px;    
+  }
+  @include tab{
+    width:20px;
+    height:20px;
+  }
+
   border-radius:50%;
 }
-.side-img-style{
+.sidebar-user-name{
   display:inline-block;
+  float:left;
+}
+.sidebar-user-img{
+  display:inline-block;
+  float:left;
+}
+.side-img-style{
+  display:inline;
+
 }
 .side-img-style img{
-  width:100px;
-  height:150px;
+  @include pc{
+    width:90% !important;
+    height:150px;
+  }
+  @include tab{
+    width:120% !important;
+    height:130px;
+  }
+  @include sp{
+    width:30% !important;
+    height:100px;
+    display:inline-block;
+    float:left;
+  }
 }
 .side-bar-content{
   display:inline-block;
-  height:150px;
     p{
+      @include pc{
+        font-size:15px;
+      }
+      @include tab{
+        font-size:14px;
+      }
       word-wrap: break-word;
-      font-size: 15px;
       height: 50px;
       display: table-cell;
       vertical-align: middle;
+    }
+    @include sp_more{
+      height:150px;
+    }
+    @include sp{
+      width:60%;
+      display:inline-block;
+      float:left;
     }
 }
 .side-bar-flex{
@@ -81,7 +128,7 @@ body{
   width: 110px !important;
 }
 .search-btn{
-  background: #1FA67B;
+  background: #aaedaa00;
   color: white;
   border: 2px solid white!important;
   padding: 4px 10px;
@@ -103,12 +150,14 @@ body{
   font-size:20px;
 }
 .navbar-default{
-  background-color: #1FA67B !important;
+  overflow:hidden;
+  background-color: lightgreen !important;
   color: white;
 }
 .header-link{
   color: white !important;
-  background: #289270;
+  background: #aaedaa00;
+  border:2px solid white;
   /* height: 100%; */
   display: inline-block;
   padding: 5px 10px;
@@ -118,8 +167,9 @@ body{
 }
 // ホームページ
 .top-background{
+  border-top:1px solid white;
   overflow:hidden;
-  background:#1FA67B;
+  background:lightgreen;
   color:white;
 }
 .title-center{
@@ -143,15 +193,23 @@ body{
   padding-bottom:20px;
 }
 .login-btn{
-  background:#1FA67B;
+  background:lightgreen;
   border:2px solid white !important;
 }
 .login-btn{
   margin-bottom:20px !important;
 }
+.img-style img{
+  @include sp_more{
+    height: 150px;
+  }
+  @include sp{
+    height:100px;
+  }
+  width: 80%;
+}
 .book-content{
-  width:23% !important;
-  text-align: center;
+  overflow: hidden;
   background: white;
   padding: 0;
   margin: 5px 5px;
@@ -159,13 +217,56 @@ body{
   padding-bottom: 10px;
   padding-right:13px !important;
   padding-left:13px !important;
-  border-radius: 5px;
+  border-radius: 10px;
+  margin-bottom:20px;
+  margin-right:5%;
+
+}
+.user-img-box{
+  @include sp{
+    display:block
+  }
+
+}
+.counter-box{
+  @include sp_more{
+    display:inline-block;
+  }
+  @include sp{
+    display:block;
+    width:100%;
+  }
+}
+.book-text{
+  @include sp_more{
+    height:80px;
+  }
+  @include sp{
+    height:50px;
+    font-size:12px !important;
+  }
+
+}
+.book-left{
+  width:30%;
+}
+.book-right{
+  width:60%;
+}
+.book-left,.book-right{
+  display:inline-block;
+  float:left;
 }
 .book-title{
+  @include sp_more{
+    font-size:25px;
+    height: 60px;
+  }
+  @include sp{
+    height:40px;
+    font-size:15px;
+  }
   display: table;
-  text-align: center;
-  margin: 0 auto;
-  height: 50px;
   margin-top: 10px;
   margin-bottom: 5px;
   a{
@@ -174,11 +275,21 @@ body{
   }
 }
 .like-count{
+
   color:pink;
 }
 .recommend_count{
   color:skyblue;
   padding-bottom:3px;
+}
+.like-count,.recommend_count{
+  @include tab{
+    font-size:12px;
+  }
+  @include sp{
+    float:left;
+  }
+  display:inline-block;
 }
 // 
 .like{
@@ -208,21 +319,52 @@ body{
 .user-profile-box{
   overflow:hidden;
     .user-icon{
+      @include pc{
+        margin-right:50px;       
+      }
+      @include tab{
+        margin-right:10px;
+      }
     border-radius:50%;
     float:left;
-    margin-right:50px;
+ 
   }
   .user-profile-content{
-    margin-left:150px;
-      .user-name{
-        font-size:35px;
-      }
+    @include pc{
+      margin-left:150px;
+    }
+    @include tab{
+      margin-left:10px;
+    }
       .user-text{
-        font-size:15px;
+        @include pc{
+          font-size:15px;
+        }
+        @include tab{
+          font-size:12px;
+        }
+        @include sp_more{
+          padding-left:100px;
+        }
+        @include sp{
+          padding-left:100px;
+          font-size:10px;
+        }
+        
       }
   }
 }
+.user-profile-box img{
+  @include sp_more{
+    width:200px;
+    height:200px;    
+  }
+  @include sp{
+    width:100px;
+    height:100px;
+  }
 
+}
 
 
 .content-center{
@@ -235,7 +377,15 @@ body{
     padding-top: 50px
 }
 #login .form-wrap {
-    width: 30%;
+  @include pc{
+    width:30%;
+  }
+  @include tab{
+    width:80%;
+  }
+  @include sp{
+    width:100%;
+  }
     margin: 0 auto;
 }
 #login h1 {
@@ -270,8 +420,10 @@ body{
     color: #fff;
 }
 .body-width{
-    overflow:hidden;
+  @include pc{
     margin-left:150px;
+  }
+    overflow:hidden;
     padding-top:50px;
 }
 

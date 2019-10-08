@@ -1,15 +1,42 @@
 $border-color:#dcdcdc;
+@import "responsive" ;
+
 .user-profile-box{
+  @include sp_more{
     margin-bottom:50px;
     margin-top:30px;
+  }
+  @include sp{
+    margin-top:15px;
+    margin-bottom:15px;
+  }
+    img{
+      @include pc{
+        width:200px;
+        height:200px;        
+      }
+      @include tab{
+        width:150px;
+        height:150px;
+      }
+
+    }
 }
 .list{
     .tab-head{
-        display:table;
-        margin-bottom:50px;
+        display:flex;
+        @include sp{
+          font-size:10px;
+        }
+        @include sp_more{
+          margin-bottom:50px;
+        }
+        @include sp{
+          margin-bottom:20px;
+        }
 
       li{
-        display:table-cell;
+        display:inline-block;
         cursor:pointer;
         border-bottom: 2px solid $border-color;
         padding:3px;
@@ -49,6 +76,8 @@ $border-color:#dcdcdc;
 .comment-content{
   border:2px solid #dcdcdc;
   margin:10px 20px;
+  background:white;
+  padding:10px 15px;
 }
 .comment-content-head {
   display:flex;
@@ -59,14 +88,24 @@ $border-color:#dcdcdc;
       border-radius:50%;
   }
   h2{
-    font-size:20px;
+    @include sp_more{
+      font-size:20px;
+    }
+    @include sp{
+      font-size:15px;
+    }
     margin:0;
     display:inline-block;
     
   }
 }
 .comment-text{
-  font-size:20px;
+  @include sp_more{
+    font-size:20px;
+  }
+  @include sp{
+    font-size:12px;
+  }
 }
 .user-img{
   width:30px;
@@ -74,14 +113,24 @@ $border-color:#dcdcdc;
   border-radius:50%;
 }
 .text{
-  padding-right:135px;
-  
+  @include pc{
+    padding-right:135px;
+  }
+  @include tab{
+    padding-right:30px;
+  }
+
 }
 .user-text{
   padding-bottom:5px;
 }
 .user-name{
-  font-size:35px;
+  @include sp_more{
+    font-size:35px;
+  }
+  @include sp{
+    font-size:20px !important;
+  }
 }
 .form-user-name{
   width:400px !important;

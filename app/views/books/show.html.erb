@@ -2,10 +2,10 @@
 <h1><strong><%= @book.title %></strong></h1>
 <div class = "show-all-content">
   <div class = "show-head-content">
-    <div class = "show-img col-md-3">
+    <div class = "book-left img-style">
       <%= image_tag @book.img.url %><br>
     </div>
-    <div class = "show-title col-md-9">
+    <div class = "show-title book-left">
       <h1><%= @book.title %></h1>
       <div class="tag-list">
         <%= render 'books/tag_list',tag_list: @book.tag_list %>
@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <% if !session[:user_id].present? %>
-        <div>
+        <div class = "counter-box">
           <div class = "col-md-6 like-count">
             気になる!<%= book_like_count(@book.id) %>件
           </div>
@@ -37,7 +37,7 @@
       <%= link_to "削除する",book_path(@book.id),method: :delete,data: {confirm: "本当によろしいですか？"},class: "delete-link" %>    
     </div>
   <% end %>
-  <div class = "show-body">
+  <div class = "show-body ">
     <%= markdown("#{@book.text}") %>
   </div>
   
