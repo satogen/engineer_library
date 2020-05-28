@@ -57,6 +57,6 @@ gem "font-awesome-sass"
 gem 'acts-as-taggable-on'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'dotenv-rails'
