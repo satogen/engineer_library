@@ -55,7 +55,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem "font-awesome-sass"
 gem 'acts-as-taggable-on'
-gem 'redcarpet', '~> 2.3.0'
+gem 'redcarpet', '~> 3.5.1'
 gem 'coderay'
 gem 'kaminari', '~> 0.17.0'
 gem 'kaminari-bootstrap', '~> 3.0.1'
